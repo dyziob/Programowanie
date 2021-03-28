@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Programowanie w c++</title>
+
+    <link rel="stylesheet" href="style.css" >
+
+    <link rel="stylesheet" href="css/fontello.css">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+</head>
+<body>
+    <div class="poj">
+        <header>
+            <div class="logo">
+                <img  src="image1.png" class="photo" style="float: right;"/>
+                    Programowanie w
+                <div style="clear: both;"></div>
+            </div>
+        </header>
+        <nav>
+            <ol>
+                <li><a href="index.html">Strona Główna</a></li>
+                <li><a href="1.html">1. Wprowadzenie</a>
+                    <ul>
+                        <li><a href="1.1.html">1.1 Kompilatory</a>
+                            <ul>
+                                <li><a href="1.1.1.html">1.1.1 Linux</a></li>
+                                <li><a href="1.1.2.html">1.1.2 Windows</a></li>
+                            </ul>
+                        </li>
+                            <li><a href="1.2.html">1.2 Literatura</a></li>
+                    </ul>
+                </li> 
+                <li><a href="2.html">2. Zaczynamy</a>
+                    <ul>
+                        <li><a href="2.1.html">2.1 Najprostsze programy</a></li>
+                        <li><a href="2.2.html">2.2 Proste operacje We/Wy</a>
+                            <ul>
+                                <li ><a href="2.2.1.html">2.2.1 Wyprowadzenie danych</a></li>
+                                <li ><a href="2.2.2.html">2.2.2 Wprowadzanie danych</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="2.3.html">2.3 Funkcje</a></li>
+                        <li><a href="2.4.html">2.4 Argumenty wywołania</a></li>
+                    </ul>
+                </li>
+                    <li><a href="3.html">3. Preprocesor</a>
+                     <ul>
+                         <li><a href="3.1.html">3.1 Co to jest preprocesor?</a></li>
+                         <li><a href="3.2.html">3.2 Dyrektywy preprocesora</a></li>
+                         <li id="last"><a href="3.3.html">3.3 Predefiniowane nazwy (makra) preprocesora</a></li>
+                     </ul>
+                </li>
+            </ol>
+        </nav>
+        <main>
+            <h1 style="text-align: center; ">2.1 Najprostsze programy</h1>
+            <p>Przejdźmy zatem do omawiania samego języka C++.</p>
+
+                    <p>Znający Javę (czy PHP) z łatwością zauważą, że wywodzi się ona, przynajmniej jeśli chodzi o składnię, właśnie od C/C++ (choć semantycznie przypomina bardziej Smalltalk czy język Ada). Java nie jest tu zresztą wyjątkiem: wiele innych języków nawiązuje swą składnią do C/C++. Tak więc znajomość C/C++ okaże się bardzo przydatna przy nauce również innych współczesnych języków. W C/C++ występuje też sporo konstrukcji specyficznych dla tego języka. Dotyczą one, między innymi, operacji wejścia/wyjścia. Zauważmy tu, że operacje WE/WY są z kolei różne dla C i C++. Posługiwać się będziemy raczej tymi zdefiniowanymi w C++, choć znajomość wersji z języka C jest bardzo przydatna, choćby przy czytaniu istniejących kodów.</p>
+                    
+                    <p>Język C++ można pod wieloma względami traktować jak nadzbiór klasycznego języka C. W zasadzie, być może po kilku niewielkich zabiegach kosmetycznych, każdy program w C da się skompilować za pomocą kompilatora C++. Oczywiście odwrotnie nie jest to zwykle możliwe. To, czego będziemy się uczyć, to język C++; czasem jednak warto wspomnieć o klasycznych konstrukcjach z C, choćby dlatego, że stosuje się je często również w kodzie napisanym zasadniczo w C++, jak i dlatego, że konstrukcje te bywają w pewnych sytuacjach bardziej efektywne.</p>
+                    
+                    <p>źródłowe zawierające kod C++ mają tradycyjnie rozszerzenie ' .cpp', ale spotyka się też rozszerzenia ' .C' i inne. Pliki z kodem w czystym C mają zwyczajowo rozszerzenie ' .c'. Specjalny rodzaj plików, tzw. pliki nagłówkowe, mają w C i C++ rozszerzenie ' .h' lub, w C++, w ogóle nie mają rozszerzenia.</p>
+                    
+                    <p>Rozpatrzmy zatem plik helloWorld.cpp zawierający zasłużony program Hello, World (B. Kernighan, 1973) w języku C++:
+                    
+                    <xmp>P2: helloWorld.cpp     Hello, World w C++
+                          1.  #include <iostream>                     ➊
+                          2.  using namespace std;                    ➋
+                          3.  
+                          4.  /*
+                          5.      Naukę każdego języka programowania
+                          6.      zaczynamy zawsze od Hello, World!!!!
+                          7.   */
+                          8.  
+                          9.  int main() { // Komentarze jak w Javie
+                         10.      cout << "Hello, World!" << endl;    ➌
+                         11.  }</xmp>
+                    Jak łatwo się domyślić, uruchomienie tego programu powinno spowodować wypisanie na ekranie słów 'Hello, World!'.</p>
+                    
+                    <p>Znający Javę zauważą, że struktura tego programu jest różna od analogicznego programu w tym języku. Pierwsza rzucająca się w oczy różnica to fakt, że nie występują tu w ogóle klasy, bez których w Javie nie da się napisać żadnego programu. W szczególności, funkcja main nie jest zawarta w żadnej klasie: jest funkcją globalną.
+                    Ogólnie, program w C++ składa się z jednego lub kilku (zapisanych w osobnych plikach) modułów. Każdy moduł może zawierać dyrektywy preprocesora (jeśli są potrzebne), deklaracje i/lub definicje zmiennych i funkcji oraz, oczywiście, komentarze. Dyrektywy preprocesora poprzedzone są znakiem ”, jak dyrektywa #include &lt;iostream&gt; w powyższym kodzie, i nie są przekazywane kompilatorowi —  służą jedynie do wstępnego przetworzenia tekstu programu. Zadanie to wykonuje wspomniany już preprocesor. Żadnej linii rozpoczynającej się od znaku ” kompilator w ogóle nie zobaczy!</p>
+                    
+                    <p>Dokładnie jeden moduł musi zawierać funkcję o nazwie main. Wykonanie programu polega zasadniczo na wykonaniu tej właśnie funkcji. Legalnym programem jest więc np.
+                    
+                           <xmp>int main() {return 0;}
+                        </xmp>
+                    lub nawet
+                           <xmp>int main(){}</xmp>
+                    Zajmijmy się jednak programem z pliku helloWorld.cpp. Na jego przykładzie przyjrzymy się podstawowym elementom programu w C++:</p>
+
+                    <h3>#include... (➊)</h3>    
+                                <p>Włączenie do programu zawartości pliku iostream (plik włączany w ten sposób nazywamy plikiem nagłówkowym, ang. header file). Dzięki temu w programie dostępne będą definicje (lub tylko deklaracje – więcej o tym powiemy później) narzędzia (w postaci najrozmaitszych klas, funkcji, stałych itd.), służące do wykonywania operacji wejścia/wyjścia (w skrócie, operacje we/wy), a więc np. wczytywania z konsoli i wypisywania na ekranie danych. Zauważmy, że instrukcja #include powoduje rzeczywiste włączenie pliku: równie dobrze moglibyśmy w tym miejscu wpisać jego treść bezpośrednio do naszego programu. Jest to więc zupełnie co innego niż instrukcja import w Javie, gdzie chodzi raczej o rozszerzenie przeszukiwanej przestrzeni nazw.
+                                Sam plik iostream znajduje się w znanym kompilatorowi katalogu: użycie nawiasów kątowych (&lt;...&gl;) oznacza właśnie, że nie jest to nasz własny plik, ale plik ze znanego kompilatorowi specjalnego katalogu bibliotecznego, dostarczonego zwykle wraz z kompilatorem przez producenta. Gdyby chodziło o dołączenie naszego własnego pliku, co też jest możliwe, użylibyśmy podobnej instrukcji, ale zamiast nawiasów kątowych umieścilibyśmy cudzysłowy. Tak więc #include &lt;bib.h&gl; włącza standardowy plik nagłówkowy o nazwie bib.h (dostarczany zwykle wraz z kompilatorem), natomiast podobna dyrektywa #include "bib.h" dołączyłaby plik nagłówkowy bib.h z katalogu bieżącego, a tylko jeśli w katalogu tym takiego pliku by nie było, poszukiwany byłby w katalogu standardowym. Zauważmy, że instrukcja #include nie jest przeznaczona dla kompilatora. Włączenie pliku wykonywane jest przez preprocesor, który zajmuje się wyłącznie przetwarzaniem tekstu naszego programu przed jego właściwą kompilacją —  to, co zobaczy kompilator, to tekst naszego programu przetworzony przez preprocesor. Inne przydatne instrukcje (dyrektywy) preprocesora poznamy w jednym z następnych rozdziałów.</p>
+                    <h3>using namespace std; (➋)</h3>
+                                <p>Linia ta oznacza, że nazw (klas, stałych, funkcji) niezdefiniowanych w naszym programie należy szukać w przestrzeni nazw std. W tej przestrzeni nazw znajdują się właśnie nazwy obiektów dostarczone przez dyrektywę preprocesora #include <iostream>: jak widać, samo dołączenie pliku iostream nie wystarcza — obiekty tam zdefiniowane są „zamknięte” w przestrzeni nazw std. Dyrektywy using moglibyśmy tu nie zastosować, ale wtedy musielibyśmy pisać na przykład std::cout, std::endl zamiast po prostu cout i  endl.
+                                O przestrzeniach nazw powiemy więcej w rozdziale o przestrzeniach nazw .</p>
+                    <h3>Komentarze (linie 4-7 i 9)</h3>
+                                <p>Komentarze mogą być wieloliniowe, jeśli ograniczone są dwuznakami ' /*' i ' */', lub jednoliniowe: od dwuznaku ' //' włącznie do końca bieżącej linii. Komentarzy w pierwszej z tych form nie można zagnieżdżać (choć niektóre kompilatory na to pozwalają). Komentarze zostaną z tekstu programu wycięte (i zastąpione jednym znakiem odstępu) już na wstępnym etapie przetwarzania i nie mają żadnego znaczenia na dalszych etapach kompilacji.</p>
+                    <h3>Funkcja main (linie 9-11)</h3>
+                                <p>Funkcja main musi zwracać („obliczać”) wartość typu int (czyli liczbę całkowitą), co zaznaczamy pisząc nazwę typu int przed nazwą funkcji. Zauważmy, że main jest zawsze funkcją globalną, tzn. nie jest i nie może być zanurzona w żadnej klasie (jak funkcja o tej samej nazwie i podobnym przeznaczeniu w Javie). Wartość typu int zwracana jest do systemu i zwyczajowo powinna wynosić 0, jeśli program kończy się pomyślnie. Niezerowa wartość zwrócona oznacza zwykle niepowodzenie, którego naturę można zakodować tą wartością i wykorzystać na przykład w skrypcie powłoki, z którego uruchamialiśmy nasz program. Jeśli zwracamy z funkcji main wartość niezerową, to powinna to być wartość dodatnia mniejsza od 256 (system może traktować w specjalny sposób wartości ujemne). Normalnie, jeśli funkcja deklaruje, że zwraca wartość (czyli jest funkcją rezultatową), to musi to zrobić (za pomocą instrukcji return). Pod tym względem main jest wyjątkiem: jeśli nie ma w treści instrukcji return, kompilator doda ją sam.
+                                Funkcja main pełni rolę punktu wejścia do programu; wyjście sterowania z tej funkcji powoduje zakończenie programu, choć, jak się przekonamy, nie natychmiastowe — najpierw „zwijany” jest stos (nie mówimy tu o programach wielowątkowych, które zachowują się nieco inaczej).
+                                Funkcja main może mieć parametry, poprzez które system przekazuje do programu argumenty wywołania. W C++ pierwszym z tych argumentów, o numerze zero, jest zawsze nazwa samego wywoływanego programu. Przekazywanie argumentów wywołania wyjaśnimy bliżej niebawem. Jeśli nie zamierzamy korzystać z argumentów wywołania, to funkcję main można zadeklarować z pustą listą parametrów (ale nawiasy są wymagane). Niektórzy uważają, że lepszym stylem, którego należy się trzymać nie tylko w odniesieniu do funkcji main, jest jawne wskazanie w takich przypadkach, że lista parametrów jest pusta, poprzez użycie słowa kluczowego void: ' int main(void)...'.</p>
+                    <h3>Blokowanie (linie 9-11)</h3>
+                                <p>Ujęcie kilku instrukcji w nawiasy klamrowe ('{' and '}') powoduje, że cały ten blok może być traktowany jako jedna instrukcja wszędzie tam, gdzie składnia języka wymaga pojedynczej instrukcji, a chcielibyśmy umieścić ich tam wiele (nazywamy to instrukcją złożoną). Blokowanie instrukcji ma też wpływ na widoczność i zasięg zmiennych, o czym powiemy w dalszym ciągu.
+                                Ciało (treść) funkcji ma formę instrukcji złożonej, a zatem ujęte jest w nawiasy klamrowe i następuje po nagłówku funkcji określającym, między innymi, typ wartości zwracanej oraz liczbę i typ parametrów funkcji.</p>
+                    <h3>Instrukcje (➌)</h3>
+                                <p>Jest to jedyna instrukcja tego programu. Jak widzimy, instrukcje kończą się średnikiem. Format zapisu programu jest „wolny”; oznacza to, że dowolna niepusta sekwencja białych znaków, włączając znak nowej linii, jest równoważna jednemu odstępowi. Pozwala to na pewną swobodę w zapisie programu: ze swobody tej należy korzystać, aby pisany kod był jak najbardziej czytelny (oczywiście żadnych spacji nie może być wewnątrz słół kluczowych i nazw).
+                                Ta konkretna linia powoduje wyprowadzenie na ekran napisu podanego w cudzysłowach. Wykorzystany jest tu mechanizm wyprowadzania danych właściwy dla C++ (a nieobecny w C). Właśnie po to, by móc użyć tego mechanizmu, musieliśmy w linii pierwszej dołączyć plik nagłówkowy iostream.
+                                Operacje wejścia i wyjścia, a więc wprowadzania danych, na przykład z klawiatury, i ich wyprowadzania, na przykład na ekran komputera, to temat długi i dość zagmatwany (zresztą nie tylko w C/C++). Zajmiemy się nim w swoim czasie (rozdział o operacjach we/wy ) bardziej szczegółowo, a poniżej zamieścimy parę wstępnych informacji na ten temat, aby móc używać podstawowych operacji we/wy w naszych programach.</p>
+                                <p>Zauważmy, że w C++, jako języku w zasadzie proceduralnym, instrukcje wykonywane są w takiej kolejności w jakiej pojawiają się w programie (choć, jak się przekonamy, powtórzenia i skoki są możliwe).</p>
+                                <p>Zanim przejdziemy do bardziej szczegółowego omówienia tych i innych elementów programu w C++, kilka uwag wstępnych na temat wprowadzania i wyprowadzania danych.</p>
+        </main>
+        <div class="socials">
+            <div class="socialdivs">
+                <div class="fb">
+                    <a href="#"><i class="icon-facebook"></i></a>
+                </div>
+                <div class="gm">
+                    <a href="#"><i class="icon-gmail"></i></a>
+                </div>
+                <div class="tw">
+                    <a href="#"><i class="icon-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <footer> Krzysztof Brzostowski Kl 3i &copy; </footer>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Programowanie w c++</title>
+
+    <link rel="stylesheet" href="style.css" >
+
+    <link rel="stylesheet" href="css/fontello.css">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+
+</head>
+<body>
+    <div class="poj">
+        <header>
+            <div class="logo">
+                <img  src="image1.png" class="photo" style="float: right;"/>
+                    Programowanie w
+                <div style="clear: both;"></div>
+            </div>
+        </header>
+        <nav>
+            <ol>
+                <li><a href="index.html">Strona Główna</a></li>
+                <li><a href="1.html">1. Wprowadzenie</a>
+                    <ul>
+                        <li><a href="1.1.html">1.1 Kompilatory</a>
+                            <ul>
+                                <li><a href="1.1.1.html">1.1.1 Linux</a></li>
+                                <li><a href="1.1.2.html">1.1.2 Windows</a></li>
+                            </ul>
+                        </li>
+                            <li><a href="1.2.html">1.2 Literatura</a></li>
+                    </ul>
+                </li> 
+                <li><a href="2.html">2. Zaczynamy</a>
+                    <ul>
+                        <li><a href="2.1.html">2.1 Najprostsze programy</a></li>
+                        <li><a href="2.2.html">2.2 Proste operacje We/Wy</a>
+                            <ul>
+                                <li ><a href="2.2.1.html">2.2.1 Wyprowadzenie danych</a></li>
+                                <li ><a href="2.2.2.html">2.2.2 Wprowadzanie danych</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="2.3.html">2.3 Funkcje</a></li>
+                        <li><a href="2.4.html">2.4 Argumenty wywołania</a></li>
+                    </ul>
+                </li>
+                    <li><a href="3.html">3. Preprocesor</a>
+                     <ul>
+                         <li><a href="3.1.html">3.1 Co to jest preprocesor?</a></li>
+                         <li><a href="3.2.html">3.2 Dyrektywy preprocesora</a></li>
+                         <li id="last"><a href="3.3.html">3.3 Predefiniowane nazwy (makra) preprocesora</a></li>
+                     </ul>
+                </li>
+            </ol>
+        </nav>
+        <main>
+            <h1 style="text-align: center; ">3.2 Dyrektywy preprocesora</h1>
+            <p style="text-align: center;">#include &lt;file>          #include "file"</p>
+
+            <p>włącza w miejscu wystąpienia zawartość pliku file. A zatem to, co zobaczy kompilator, to nasz program i ten dołączony dyrektywami #include.</p>
+
+            <p>Pomiędzy nawiasami kątowymi (znakami mniejszości/większości) lub znakami cudzysłowu a nazwą pliku nie są dopuszczalne żadne białe znaki. Natomiast odstęp pomiędzy dyrektywą #include a otwierającym nawiasem/cudzysłowem jest opcjonalny.</p>
+
+            <p>W pierwszej z tych form, z nawiasami kątowymi, plik file jest poszukiwany w znanym preprocesorowi katalogu systemowym, określonym zwykle podczas instalacji pakietów kompilatora w systemie (nazwą tego katalogu jest często include). Jeśli użyto drugiej formy, ze znakami cudzysłowu, to plik jest najpierw poszukiwany w katalogu bieżącym, a jeśli tam nie zostanie znaleziony, to jest dalej traktowany tak samo, jakby jego nazwa była zapisana w nawiasach kątowych. Plik włączany dyrektywą #include jest zwykle normalnym plikiem tekstowym zawierającym kod napisany w C/C++ i, ewentualnie, inne dyrektywy preprocesora (a zatem takie dołączanie plików wolno zagnieżdżać). Czasami jednak forma pliku systemowego dołączanego przez użycie ' #include &lt;file&gl;' z nawiasami kątowymi może być inna: może to być jakaś forma już prekompilowana. Jeśli tak jest, to fakt ten powinien być dla użytkownika w zasadzie niewidoczny</p>
+
+            <p style="text-align: center;">#define nazwa wart          #define nazwa          #undefine nazwa</p>
+
+            <p>pierwsza z tych form zastępuje w tekście programu każde wystąpienie leksemu nazwa leksemem wart. Zauważmy, że leksem nazwa w ogóle w wynikowym tekście programu nie pojawi się — wszystkie jego wystąpienia będą bowiem zastąpione leksemem wart. Używamy terminu leksem, aby podkreślić, że zastąpione zostaną wystąpienia nazwa tylko takie, w których nazwa jest pełnym symbolem (np. identyfikatorem zmiennej, nazwą funkcji itd.). Nie będzie zastępowania, jeśli nazwa będzie tylko częścią identyfikatora. Tak więc następujący fragment
+
+                <xmp> 
+                    #define dim 256
+
+                        int k = dim;
+                        int dimen = 2*dim;
+                    </xmp>
+
+                        jest równoważny
+
+                        <xmp>
+                            int k = 256;
+                                int dimen = 2*256;
+                            </xmp>
+
+                                i w drugim wierszu na szczęście nie pojawi się ' int 256en = 2*256'. Jest tak dlatego, że w identyfikatorze dimen podciąg dim nie jest osobnym leksemem.</p>
+                                <p>Efektem ubocznym dyrektywy ' #define nazwa wart' jest wpisanie przez preprocesor nazwy nazwa na listę nazw zdefiniowanych. Jeśli użyjemy formy bez podawania żadnej wartości, ' #define nazwa', to będzie to jedyny efekt takiej dyrektywy. Nazwa nazwa nie będzie wtedy niczym zastępowana, ale będzie uznana za zdefiniowaną i fakt ten możemy później sprawdzać. Jak to zrobić i do czego to się może przydać, pokażemy za chwilę. Częstym błędem jest pisanie na przykład ' #define dim=256' po której to dyrektywie każde wystąpienie leksemu dim zostanie zastąpione nie napisem '256', a napisem ' =256' (a więc razem ze znakiem równości). Tak więc na przykład legalna instrukcja ' k=m=dim' zostanie zastąpiona przez ' k=m==256', co formalnie jest prawidłowym wyrażeniem, ale znaczy kompletnie co innego (tego typu błędy, spowodowane błędami w dyrektywach preprocesora, należą do najtrudniejszych do wykrycia).</p>
+
+                                        <p>Nazwę zdefiniowana przez #define można „oddefiniować” za pomocą dyrektywy ' #undefine nazwa'.</p>
+
+                                        <p>W poniższym fragmencie funkcja function zostanie skompilowana po zastąpieniu wszytkich deklaracji typu int przez deklarację typu double, po czym normalne znaczenie int zostanie przywrócone:
+                                        <xmp>
+                                               ...
+                                                #define int double
+                                                int function(int k, int m) {
+                                                    int x,y,z;
+                                                    ...
+                                                    ...
+                                                }
+                                                #undefine int
+                                                ...</xmp>
+                                                Za pomocą dyrektywy #define często definiowane są stałe, których potem używa się przy deklarowaniu tablic jako ich wymiar (patrz rozdział o tablicach ). Nie jest to polecana praktyka: znacznie lepiej użyć wtedy stałych definiowanych bezpośrednio w programie, co wyjaśnimy w rozdziale o zmiennych .
+                                </p>
+                                <p style="text-align: center;">defined          !defined</p>
+                                <p>Funkcja, która może się pojawić w treści dyrektywy przed dowolną nazwą, zwraca 1 (true), jeśli ta nazwa jest zdefiniowana, a 0 (false) w przeciwnym przypadku. Zwracana wartość może być następnie wykorzystana w dyrektywach warunkowych (patrz niżej). W formie z wykrzyknikiem znaczenie jest odwrócone: zwracaną wartością będzie 1 (true), jeśli nazwa występująca po !defined nie jest zdefiniowana. Aby podkreślić, że defined jest swego rodzaju funkcją, dopuszczalny jest też zapis defined(nazwa) i  !defined(nazwa) z użyciem nawiasów. Funkcja defined może się pojawiać tylko za #if, #elif lub jako podwyrażenie bardziej złożonych wyrażeń logicznych (patrz niżej).</p>
+                                <p style="text-align: center;">#if      #ifdef      #ifndef      #else      #elif      #endif</p>
+                                <p>Za pomocą tych dyrektyw można zawiadywać kompilacją warunkową, to znaczy włączniem lub wyłączaniem pewnych fragmentów tekstu programu do tekstu wynikowego jaki zostanie przesłany do kompilacji. Znaczenie #if, #else, #endif jest oczywiste i zgodne z intuicją; #elif odpowiada 'else if'. Typowa konstrukcja z ich użyciem ma postać:</p>
+                                <xmp>
+                                        1.      #define dimen
+                                        2.      ...
+                                        3.      ...
+                                        4.      #if defined dimen
+                                        5.          // fragment do kompilacji jeśli
+                                        6.          // 'dimen' jest zdefiniowane
+                                        7.      #else
+                                        8.          // fragment do kompilacji jeśli
+                                        9.          // 'dimen' nie jest zdefiniowane
+                                       10.      #endif
+                                </xmp>
+                                <p>Wyrażenie w linii czwartej może być zastąpione przez ' #ifdef dimen', czyli można traktować #ifdef jako skrót od ' #if defined'. Podobnie #ifndef (od if not defined) jest skrótem zastępującym ' #if !defined'.</p>
+
+                                <p>Rozpatrzmy przykład. Przypuśćmy, że program będzie kompilowany czasem kompilatorem języka C, a czasem C++. Jeśli jest to C++, to chcielibyśmy używać operatora '<<' do wyprowadzania danych. Jeśli jest to C, to operator ten nie zadziała, więc użyjemy funkcji specyficznej dla C, a mianowicie funkcji printf (linia ➊ programu poniżej). Każdy preprocesor związany z kompilatorem C++ definiuje leksem, czyli makro __cplusplus (dwa podkreślniki na początku). Preprocesor związany z kompilatorem czystego C takiej nazwy nie definiuje. Zatem można postąpić na przykład tak:</p>
+                                <xmp>
+                                        P7: cvscpp.c     Kompilacja warunkowa
+                                        1.  #ifdef __cplusplus
+                                        2.      #include <iostream>
+                                        3.      using namespace std;
+                                        4.  #else
+                                        5.      #include <stdio.h>
+                                        6.  #endif
+                                        7.  
+                                        8.  int main() {
+                                        9.  #ifdef __cplusplus
+                                       10.      cout << "Hello, C++" << endl;
+                                       11.  #else
+                                       12.      printf("Hello, C\n");         ➊
+                                       13.  #endif
+                                       14.  }
+                                </xmp>
+                                <p>Aby użyć C++, wywołujemy pod Linuksem kompilator g++, natomiast aby użyć C, wywołujemy gcc, a rozszerzeniem w nazwie pliku z programem powinno byc .c. Efekt widać z przebiegu sesji:</p>
+                                <xmp>
+                                        cpp> g++ -o cvscpp cvscpp.c
+                                        cpp> ./cvscpp
+                                        Hello, C++
+                                        cpp> gcc -o cvscpp cvscpp.c
+                                        cpp> ./cvscpp
+                                        Hello, C
+                                        cpp>
+                                </xmp>
+                                <p>Kompilator Visual Studio definiuje zawsze makro _WIN32 (nawet na maszynach 64-bitowych), a kompilatory gcc makra __GNUC__ i, (dla C++), __GNUG__. Można to wykorzystać przy kompilacji tego samego pliku źródłowego na tych dwóch platformach.</p>
+                                <p>Konstrukcja oparta na tym samym pomyśle jest stosowana do zabezpieczenia się przed wielokrotną kompilacją tego samego włączanego pliku. Taka możliwość jest bardzo prawdopodobna, jeśli we włączanych plikach zagnieżdżone są kolejne dyrektywy #include. Jeśli np. wielokrotnie użyjemy dyrektywy włączającej plik plikh.h (czyli ' #include "plikh.h"'), a w pliku tym zastosujemy konstrukcję (zwaną include guard):</p>
+                                <xmp>
+                                        #ifndef PLIKH_H
+                                        #define PLIKH_H
+                                 
+                                           // właściwy kod
+                                 
+                                        #endif
+                                </xmp>
+                                <p>to plik ten zostanie tak naprawdę włączony tylko za pierwszym razem: nazwa PLIKH_H nie będzie wtedy zdefiniowana, zatem ' #ifndef PLIKH_H' będzie warunkiem prawdziwym. Tak więc wszystko pomiędzy ' #ifndef PLIK_H' i  #endif zostanie uwzględnione w dalszym przetwarzaniu. Pierwszym wierszem „widzianym” wewnątrz bloku będzie linia druga definiująca nazwę PLIKH_H. Zatem przy następnej próbie dołączenia pliku plikh.h warunek ' #ifndef PLIKH_H' będzie fałszywy i cały kod, aż do linii zawierającej #endif, zostanie opuszczony. Oczywiście, musimy bardzo uważać, aby nie użyć tej samej nazwy makra dla różnych plików. Większość kompilatorów, choć nie jest to wymagane standardem, sama zadba o jednokrotne włączenie pliku jeśli rozpoczyna się on od linii #pragma once.</p>
+                                <p>Do budowania wyrażeń logicznych występujących po #if i  #elif można używać operatorów alternatywy logicznej (||), koniunkcji (&&) i negacji (!), tak jak to robimy w C/C++ (patrz rozdział o operatorach ).</p>
+                                <p style="text-align: center;">#error komunikat</p>
+                                <p>Napotkanie tej dyrektywy powoduje w czasie kompilacji wyświetlenie informacji zawierającej podany komunikat. Niektóre kompilatory zaraz potem w ogóle przerywają dalsze przetwarzanie (choć inne je kontynuują).</p>
+                                <p>Przypuśćmy, że próbujemy skompilować następujący program:</p>
+                                <xmp>
+                                        P8: preplog.cpp     Dyrektywa #error
+                                        1.  #if   defined(POL) && defined(FRA)
+                                        2.     #error Please define only one country
+                                        3.  #elif !(defined(POL) || defined(FRA))
+                                        4.     #error Please define a country
+                                        5.  #endif
+                                        6.  
+                                        7.  #ifdef POL
+                                        8.     #define country "Poland"
+                                        9.     #define capital "Warsaw"
+                                       10.  #elif defined(FRA)
+                                       11.     #define country "France"
+                                       12.     #define capital "Paris"
+                                       13.  #endif
+                                       14.  
+                                       15.  #include <iostream>
+                                       16.  using namespace std;
+                                       17.  
+                                       18.  int main() {
+                                       19.      cout << capital << " is the capital of "
+                                       20.           << country << "." << endl;
+                                       21.  }
+                                </xmp>
+                                <p>Powinno to skończyć się błędem w trzeciej linii, gdyż ani nazwa POL, ani FRA nie jest zdefiniowana. Możemy jednak jedną lub obie te nazwy zdefiniować bezpośrednio w komendzie wywołującej kompilację za pomocą opcji -Dname, która definiuje nazwę name bez przypisywania jej żadnej wartości (moglibyśmy użyć też opcji -Dname=cokolwiek, która dodatkowo przypisałaby wartość cokolwiek nazwie name —  zauważmy, że tu występuje znak równości). Efekt można prześledzić z zapisu sesji:</p>
+                                <xmp>
+                                        cpp> g++ -o preplog preplog.cpp
+                                        preplog.cpp:4:5: #error Please define a country
+                                        cpp> g++ -o preplog -DPOL -DFRA preplog.cpp
+                                        preplog.cpp:2:5: #error Please define only one country
+                                        cpp> g++ -o preplog -DPOL preplog.cpp
+                                        cpp> ./preplog
+                                        Warsaw is the capital of Poland.
+                                        cpp> g++ -o preplog -DFRA preplog.cpp
+                                        cpp> ./preplog
+                                        Paris is the capital of France.
+                                        cpp>
+                                </xmp>
+  
+        </main>
+        <div class="socials">
+            <div class="socialdivs">
+                <div class="fb">
+                    <a href="#"><i class="icon-facebook"></i></a>
+                </div>
+                <div class="gm">
+                    <a href="#"><i class="icon-gmail"></i></a>
+                </div>
+                <div class="tw">
+                    <a href="#"><i class="icon-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <footer> Krzysztof Brzostowski Kl 3i &copy; </footer>
+    </div>
+    
+</body>
+</html>

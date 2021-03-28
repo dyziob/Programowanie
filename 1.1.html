@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Programowanie w c++</title>
+
+    <link rel="stylesheet" href="style.css" >
+
+    <link rel="stylesheet" href="css/fontello.css">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+</head>
+<body>
+    <div class="poj">
+        <header>
+            <div class="logo">
+                <img  src="image1.png" class="photo" style="float: right;"/>
+                    Programowanie w
+                <div style="clear: both;"></div>
+            </div>
+        </header>
+        <nav>
+            <ol>
+                <li><a href="index.html">Strona Główna</a></li>
+                <li><a href="1.html">1. Wprowadzenie</a>
+                    <ul>
+                        <li><a href="1.1.html">1.1 Kompilatory</a>
+                            <ul>
+                                <li><a href="1.1.1.html">1.1.1 Linux</a></li>
+                                <li><a href="1.1.2.html">1.1.2 Windows</a></li>
+                            </ul>
+                        </li>
+                            <li><a href="1.2.html">1.2 Literatura</a></li>
+                    </ul>
+                </li> 
+                <li><a href="2.html">2. Zaczynamy</a>
+                    <ul>
+                        <li><a href="2.1.html">2.1 Najprostsze programy</a></li>
+                        <li><a href="2.2.html">2.2 Proste operacje We/Wy</a>
+                            <ul>
+                                <li ><a href="2.2.1.html">2.2.1 Wyprowadzenie danych</a></li>
+                                <li ><a href="2.2.2.html">2.2.2 Wprowadzanie danych</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="2.3.html">2.3 Funkcje</a></li>
+                        <li><a href="2.4.html">2.4 Argumenty wywołania</a></li>
+                    </ul>
+                </li>
+                    <li><a href="3.html">3. Preprocesor</a>
+                     <ul>
+                         <li><a href="3.1.html">3.1 Co to jest preprocesor?</a></li>
+                         <li><a href="3.2.html">3.2 Dyrektywy preprocesora</a></li>
+                         <li id="last"><a href="3.3.html">3.3 Predefiniowane nazwy (makra) preprocesora</a></li>
+                     </ul>
+                </li>
+            </ol>
+        </nav>
+        <main>
+            <h1 style="text-align: center; ">1.1 Kompilatory</h1>
+            <p>Język C++ należy do języków kompilowanych (tak jak Fortran, Ada, Pascal i wiele innych).</p>
+
+                   <p> W odróżnieniu np. od Javy, wynikiem kompilacji nie jest niezależny od platformy kod bajtowy (ang. byte-code), ale plik wykonywalny (ang. executable), czyli taki, który zawiera kod programu w języku maszynowym odpowiednim dla platformy (czyli systemu operacyjnego i procesora naszego komputera). Tak więc dla uruchomienia programu nie jest konieczne specjalne środowisko uruchomieniowe (jak maszyna wirtualna Javy czy interpreter Pythona) — wykonanie odbywa się bezpośrednio pod kontrolą systemu operacyjnego, choć zwykle do jego działanie są konieczne pewne pliki biblioteczne. Ponieważ w czasie wykonania nie jest już dokonywana żadna dodatkowa translacja, programy w C/C++ są zwykle szybkie (programy w C są prawie tak szybkie jak programy w Fortranie, programy w C++ są zwykle, choć nie zawsze, nieco wolniejsze).</p>
+                    
+                    <p>Tak naprawdę kompilacja jest tylko jednym z etapów procesu wytwarzania pliku wykonywalnego. Dla uproszczenia jednak nazywać tu będziemy kompilacją cały proces prowadzący od pliku źródłowego do pliku wykonywalnego.
+                    W rzeczywistości potrzebny jest jeszcze na przykład preprocesor i tzw. linker (zwany też konsolidatorem albo programem łączącym). W dużym skrócie, rolą linkera jest polączenie w jeden plik wykonywalny wielu plików otrzymanych w wyniku kompilacji poszczególnych plików źródłowych, których może być wiele i mogą być kompilowane osobno i w różnym czasie.</p>
+                    
+                    <p>Zaletą tego podejścia jest duża szybkość wykonywania kodu zawartego w pliku wykonywalnym. Kompilacji oczywiście nie trzeba powtarzać przed każdym uruchomieniem programu: raz utworzony plik wykonywalny można zlecać systemowi operacyjnemu do wykonania, czyli uruchamiać, dowolną liczbę razy. Wadą języków w pełni kompilowanych, jak C++, jest, jak wspomnieliśmy, uzależnienie kodu wykonywalnego od platformy. Oczywiście sam tekst programu (źródło, ang. source) jest niezależny od platformy, jeśli trzymamy się w nim ściśle standardu języka C++ i nie stosujemy żadnych specyficznych dla danego kompilatora rozszerzeń.</p>
+                    
+                    
+                    <p>Co dla nas z tego wszystkiego wynika to to, że potrzebujemy kompilatora (wraz z linkerem, preprocesorem, bibliotekami itd.). Dla tych, którzy nie mają zainstalowanego na swoim komputerze kompilatora C++ (albo mają, ale o tym nie wiedzą), podamy więc parę szczegółów dotyczących jego instalacji. Do jej sprawdzenia możemy potem użyć następującego programu:<p>
+                    
+                    <p><xmp>P1: testInst.cpp     Test instalacji 
+                          1.  /* 
+                          2.   * Test instalacji. Program powinien wypisać nazwy
+                          3.   * 4 języków programowania w porządku alfabetycznym.
+                          4.   */
+                          5.  #include <vector>
+                          6.  #include <algorithm>
+                          7.  #include <iostream>
+                          8.  #include <string>
+                          9.  using namespace std;
+                         10.  
+                         11.  int main() {
+                         12.      vector<string> vs;<
+                         13.      vs.push_back("Python"); vs.push_back("Haskell");
+                         14.      vs.push_back("C++");    vs.push_back("Java");
+                         15.      sort(vs.begin(),vs.end());
+                         16.      for (vector<string>::iterator i = vs.begin();
+                         17.           i != vs.end(); ++i)   cout << *i << " ";
+                         18.      cout << endl;
+                         19.  }</xmp></p>
+                    <p>którego uruchomienie powinno spowodować wypisanie na ekranie nazw czterech języków programowania w porządku alfabetycznym. Program jest celowo zbyt skomplikowany jak na proste zadanie, jakie wykonuje: chodzi tu raczej o to by sprawdzić, czy instalacja C++ jest prawidłowa.</p>
+                    
+                    <p>Przy okazji podkreślmy, że
+                    
+                    dla każdego projektu w C++ tworzymy odrębny katalog
+                    o umiejętnie dobranej nazwie i przemyślanej lokalizacji w strukturze katalogów. Nieprzestrzeganie tego zalecenia wcześniej czy później (raczej wcześniej) doprowadzi do powstania chaosu niemożliwego do opanowania.</p>
+        </main>
+        <div class="socials">
+            <div class="socialdivs">
+                <div class="fb">
+                    <a href="#"><i class="icon-facebook"></i></a>
+                </div>
+                <div class="gm">
+                    <a href="#"><i class="icon-gmail"></i></a>
+                </div>
+                <div class="tw">
+                    <a href="#"><i class="icon-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <footer> Krzysztof Brzostowski Kl 3i &copy; </footer>
+    </div>
+    
+</body>
+</html>

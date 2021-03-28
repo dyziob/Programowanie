@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Programowanie w c++</title>
+
+    <link rel="stylesheet" href="style.css" >
+
+    <link rel="stylesheet" href="css/fontello.css">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+</head>
+<body>
+    <div class="poj">
+        <header>
+            <div class="logo">
+                <img  src="image1.png" class="photo" style="float: right;"/>
+                    Programowanie w
+                <div style="clear: both;"></div>
+            </div>
+        </header>
+        <nav>
+            <ol>
+                <li><a href="index.html">Strona Główna</a></li>
+                <li><a href="1.html">1. Wprowadzenie</a>
+                    <ul>
+                        <li><a href="1.1.html">1.1 Kompilatory</a>
+                            <ul>
+                                <li><a href="1.1.1.html">1.1.1 Linux</a></li>
+                                <li><a href="1.1.2.html">1.1.2 Windows</a></li>
+                            </ul>
+                        </li>
+                            <li><a href="1.2.html">1.2 Literatura</a></li>
+                    </ul>
+                </li> 
+                <li><a href="2.html">2. Zaczynamy</a>
+                    <ul>
+                        <li><a href="2.1.html">2.1 Najprostsze programy</a></li>
+                        <li><a href="2.2.html">2.2 Proste operacje We/Wy</a>
+                            <ul>
+                                <li ><a href="2.2.1.html">2.2.1 Wyprowadzenie danych</a></li>
+                                <li ><a href="2.2.2.html">2.2.2 Wprowadzanie danych</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="2.3.html">2.3 Funkcje</a></li>
+                        <li><a href="2.4.html">2.4 Argumenty wywołania</a></li>
+                    </ul>
+                </li>
+                    <li><a href="3.html">3. Preprocesor</a>
+                     <ul>
+                         <li><a href="3.1.html">3.1 Co to jest preprocesor?</a></li>
+                         <li><a href="3.2.html">3.2 Dyrektywy preprocesora</a></li>
+                         <li id="last"><a href="3.3.html">3.3 Predefiniowane nazwy (makra) preprocesora</a></li>
+                     </ul>
+                </li>
+            </ol>
+        </nav>
+        <main >
+            <h1 style="text-align: center; ">2.2.1 Wyprowadzanie danych</h1>
+            <p>Obiekt cout, jak powiedzieliśmy, reprezentuje standardowy strumień wyjściowy. Jest to predefiniowany obiekt klasy ostream, której definicja jest widoczna dzięki dołączeniu pliku nagłówkowego iostream. Strumień wyjściowy to strumień danych wyprowadzanych z programu do „świata zewnętrznego”, który to świat jest w tym wypadku tożsamy z ekranem komputera. Skrót cout należy rozumieć jako console output i wymawiać si-aut (porównując z Javą, najbliższym odpowiednikiem cout jest obiekt System.out). Ponieważ cout jest obiektem, można na jego rzecz wywoływać metody zdefiniowane w jego klasie. Metody te poznamy w rozdziale o operacjach WE/WY . Na razie nie musimy ich znać, aby zacząć obiektu cout używać: dla wygody programisty został bowiem dostarczony mechanizm wstawiania do strumienia za pomocą operatora '<<' (dwa znaki mniejszości, bez odstępu pomiędzy nimi). Konstrukcja jest taka jak w linii ➌ programu z pliku helloWorld.cpp. Piszemy więc</p>
+
+                <xmp>cout << "Hello, World" << endl;</xmp>
+         <p>aby wstawić napis, podany tu dosłownie jako literał, do strumienia „płynącego” na ekran, reprezentowany tu przez cout. Następnie, po kolejnej parze znaków '<<', do tego samego strumienia wstawiamy coś, czego identyfikatorem jest endl. Ta nazwa nie jest ujęta w cudzysłowy, bo nie chcemy zobaczyć na ekranie napisu " endl". Jest to tzw. manipulator (zdefiniowany również dzięki dołączeniu pliku nagłówkowego iostream). Jego wstawienie do strumienia wyjściowego powoduje dodanie znaku nowej linii. Gdybyśmy endl nie dodali, to znak nowej linii nie byłby wyprowadzony i następna operacja pisania na ekran kontynuowana byłaby w tym samym wierszu. Podobny efekt moglibyśmy osiągnąć dodając znak nowej linii do samego napisu: '"Hello, World\n"'. Dwuznak '\n' pojawiający się wewnątrz napisu oznacza właśnie znak nowej linii. Efekt byłby podobny, ale nie identyczny: wstawienie manipulatora endl powoduje dodatkowo natychmiastowe opróżnienie bufora wyjściowego i wyprowadzenie napisu na ekran. Bez niego natomiast napis nie musi być wyprowadzony natychmiast: system może zaczekać, aż w buforze wyjściowym uzbiera się więcej danych i wyprowadzić je dopiero wtedy łącznie.</p>
+         <p>W tym przykładzie wstawiliśmy do strumienia dwa elementy (obiekty): napis i manipulator. Moglibyśmy wstawić ich więcej. Zauważmy jednak, że wstawianie danych do strumienia wyjściowego odbywa się pojedynczo: każda dana musi być poprzedzona znakami '&lt;&lt;'. A zatem np. nie można oddzielać poszczególnych elementów przecinkami</p>
+         
+               <xmp>cout << "Hello, World" , endl; // NIE!!!
+         Prawidłowa jest natomiast konstrukcja
+                cout << "Pierwsza linia,"    << endl
+                     << "druga linia,"       << endl
+                     << "i w koncu trzecia." << endl;
+         która jest, zauważmy, jedną instrukcją, wyprowadzającą na ekran trzy napisy i trzy znaki końca linii.
+         Znający Javę pamiętają, że jest tam dozwolona konstrukcja
+         
+                int k = 7;
+                double x = 8.6;
+                System.out.println(k);
+                System.out.println(x);</xmp>
+         <p>Te instrukcje spowodują wypisanie na ekran liczb 7 i 8.6, mimo że typ argumentu jest w obu przypadkach inny, a w żadnym nie jest odniesieniem do obiektu klasy String. Dzieje się tak dzięki przeciążeniu metody println. Podobny mechanizm działa w C++ dla operatora '&lt;&lt;'. Wstawiać do strumienia możemy nie tylko napisy, ale zmienne typów wbudowanych lub innych, dla których działanie operatora '&lt;&lt;' zostało zdefiniowane, jak np. obiekty klasy string w przykładzie poniżej:</p>
+         
+         <xmp>P3: jan.cpp     Operator '$ \ll$'
+               1.  #include <iostream>
+               2.  #include <string>
+               3.  using namespace std;
+               4.  
+               5.  int main() {
+               6.      double waga = 76.5;
+               7.      int  wzrost = 182;
+               8.      string imie = "Jan";
+               9.      cout << imie   << " wazy " << waga << " kg i ma "
+              10.           << wzrost << " cm wzrostu."  << endl;
+              11.  }</xmp>
+         <p>Programik powyższy wypisuje, jak łatwo się domyślić, napis</p>
+         
+             <p>Jan wazy 76.5 kg i ma 182 cm wzrostu.
+         Klasa string, użyta w tym przykładzie, zostanie omówiona w rozdziale o napisach w C++. Inne nowe elementy tego przykładu omówimy bardziej szczegółowo za chwilę.</p>
+            
+            
+                    
+            
+        </main>
+        <div class="socials">
+            <div class="socialdivs">
+                <div class="fb">
+                    <a href="#"><i class="icon-facebook"></i></a>
+                </div>
+                <div class="gm">
+                    <a href="#"><i class="icon-gmail"></i></a>
+                </div>
+                <div class="tw">
+                    <a href="#"><i class="icon-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <footer> Krzysztof Brzostowski Kl 3i &copy; </footer>
+    </div>
+    
+</body>
+</html>

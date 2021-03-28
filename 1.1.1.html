@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Programowanie w c++</title>
+
+    <link rel="stylesheet" href="style.css" >
+
+    <link rel="stylesheet" href="css/fontello.css">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+</head>
+<body>
+    <div class="poj">
+        <header>
+            <div class="logo">
+                <img  src="image1.png" class="photo" style="float: right;"/>
+                    Programowanie w
+                <div style="clear: both;"></div>
+            </div>
+        </header>
+        <nav>
+            <ol>
+                <li><a href="index.html">Strona Główna</a></li>
+                <li><a href="1.html">1. Wprowadzenie</a>
+                    <ul>
+                        <li><a href="1.1.html">1.1 Kompilatory</a>
+                            <ul>
+                                <li><a href="1.1.1.html">1.1.1 Linux</a></li>
+                                <li><a href="1.1.2.html">1.1.2 Windows</a></li>
+                            </ul>
+                        </li>
+                            <li><a href="1.2.html">1.2 Literatura</a></li>
+                    </ul>
+                </li> 
+                <li><a href="2.html">2. Zaczynamy</a>
+                    <ul>
+                        <li><a href="2.1.html">2.1 Najprostsze programy</a></li>
+                        <li><a href="2.2.html">2.2 Proste operacje We/Wy</a>
+                            <ul>
+                                <li ><a href="2.2.1.html">2.2.1 Wyprowadzenie danych</a></li>
+                                <li ><a href="2.2.2.html">2.2.2 Wprowadzanie danych</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="2.3.html">2.3 Funkcje</a></li>
+                        <li><a href="2.4.html">2.4 Argumenty wywołania</a></li>
+                    </ul>
+                </li>
+                    <li><a href="3.html">3. Preprocesor</a>
+                     <ul>
+                         <li><a href="3.1.html">3.1 Co to jest preprocesor?</a></li>
+                         <li><a href="3.2.html">3.2 Dyrektywy preprocesora</a></li>
+                         <li id="last"><a href="3.3.html">3.3 Predefiniowane nazwy (makra) preprocesora</a></li>
+                     </ul>
+                </li>
+            </ol>
+        </nav>
+        <main>
+            <h1 style="text-align: center; ">1.1.1 Linux</h1>
+            <p>W najprostszej sytuacji są użytkownicy Linuksa: nie potrzebują bowiem niczego ponad to, co już prawdopodobnie mają, nawet jeśli nie byli tego świadomi. Należy tylko zadbać podczas instalacji samego systemu, aby zaznaczyć do instalacji pakiet „dla programistów” (jeśli tego nie zrobiliśmy, to można zainstalować go później jednym poleceniem za pomocą instalatora właściwego dla danej dystrybucji).</p>
+
+            <p>Jeśli w aktualnym katalogu mamy plik źródłowy zawierający program w C++, np. wspomniany wyżej plik testInst.cpp, to komenda
+
+               <xmp>g++ -o testInst testInst.cpp</xmp>
+
+            powinna spowodować uruchomienie kompilatora i linkera (konsolidatora) i, jeśli nie zostały wykryte żadne błędy, pojawienie się na dysku, w tym samym katalogu, pliku testInst, który właśnie jest plikiem wykonywalnym. W świecie Linuxa pliki wykonywalne tradycyjnie nie mają żadnego rozszerzenia, choć oczywiście nic nie stoi na przeszkodzie, abyśmy takie rozszerzenie, np.  .exe, dodali: nazwa pliku wykonywalnego będzie taka, jaką podamy po opcji '-o' powyższej komendy. Jeśli opcję tę w ogóle pominiemy, to przyjęta zostanie domyślna nazwa a.out.</p>
+            <p>Jeśli w programie używamy nowych konstrukcji językowych (ze standardu 2014), może okazać się konieczne dodanie opcji '-std=c++14'; dobrze jest też dodać opcje które wymuszą sprawdzanie zgodności ze standardem – na przykład:
+
+               <xmp> g++ -o testInst -std=c++14 -pedantic-errors -Wall testInst.cpp </xmp>
+            (w przypadku tego programu nie jest to konieczne). Program zawarty w pliku wykonywalnym uruchamiamy pisząc po prostu jego nazwę poprzedzoną znakami './', a więc w naszym przypadku './testInst', i wciskając klawisz Enter. Zatem przebieg takiej sesji mógłby być następujący:
+           <xmp>cpp> g++ -o testInst testInst.cpp
+                cpp> ./testInst
+                C++ Haskell Java Python</xmp></p>
+            <p>Jeśli nasz program zapisany jest w wielu plikach, to podajemy je wszystkie; można używać znaków uniwersalnych, czyli tzw. dżokerów (ang. wild cards), takich jak np. gwiazdki
+
+                <xmp>cpp> g++ -o testInst *.cpp</xmp>
+            Plik wykonywalny powstaje, oczywiście, jeden. Dodatkowe informacje i opis wszystkich opcji kompilatora i linkera dostępne są, jak zwykle, na stronie pomocy man (komenda man g++) lub poprzez program info (info g++). W wielu edytorach można kompilację i uruchamianie programu przypisać do mnemoników klawiszowych; istnieją też graficzne programy bardzo ułatwiające pisanie programów w C++ (jak Eclipse, Anjuta, Geany, KDevelop, CodeWarrior, Code::Blocks — można je łatwo znaleźć w internecie). Większość dobrych edytorów tekstu zapewnia podkreślanie składni, zwijanie i rozwijanie struktur, automatyczne wcinanie i inne udogodnienia do redagowania plików źródłowych C/C++.</p>
+        </main>
+        <div class="socials">
+            <div class="socialdivs">
+                <div class="fb">
+                    <a href="#"><i class="icon-facebook"></i></a>
+                </div>
+                <div class="gm">
+                    <a href="#"><i class="icon-gmail"></i></a>
+                </div>
+                <div class="tw">
+                    <a href="#"><i class="icon-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <footer> Krzysztof Brzostowski Kl 3i &copy; </footer>
+    </div>
+    
+</body>
+</html>

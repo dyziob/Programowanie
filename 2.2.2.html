@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Programowanie w c++</title>
+
+    <link rel="stylesheet" href="style.css" >
+
+    <link rel="stylesheet" href="css/fontello.css">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+</head>
+<body>
+    <div class="poj">
+        <header>
+            <div class="logo">
+                <img  src="image1.png" class="photo" style="float: right;"/>
+                    Programowanie w
+                <div style="clear: both;"></div>
+            </div>
+        </header>
+        <nav>
+            <ol>
+                <li><a href="index.html">Strona Główna</a></li>
+                <li><a href="1.html">1. Wprowadzenie</a>
+                    <ul>
+                        <li><a href="1.1.html">1.1 Kompilatory</a>
+                            <ul>
+                                <li><a href="1.1.1.html">1.1.1 Linux</a></li>
+                                <li><a href="1.1.2.html">1.1.2 Windows</a></li>
+                            </ul>
+                        </li>
+                            <li><a href="1.2.html">1.2 Literatura</a></li>
+                    </ul>
+                </li> 
+                <li><a href="2.html">2. Zaczynamy</a>
+                    <ul>
+                        <li><a href="2.1.html">2.1 Najprostsze programy</a></li>
+                        <li><a href="2.2.html">2.2 Proste operacje We/Wy</a>
+                            <ul>
+                                <li ><a href="2.2.1.html">2.2.1 Wyprowadzenie danych</a></li>
+                                <li ><a href="2.2.2.html">2.2.2 Wprowadzanie danych</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="2.3.html">2.3 Funkcje</a></li>
+                        <li><a href="2.4.html">2.4 Argumenty wywołania</a></li>
+                    </ul>
+                </li>
+                    <li><a href="3.html">3. Preprocesor</a>
+                     <ul>
+                         <li><a href="3.1.html">3.1 Co to jest preprocesor?</a></li>
+                         <li><a href="3.2.html">3.2 Dyrektywy preprocesora</a></li>
+                         <li id="last"><a href="3.3.html">3.3 Predefiniowane nazwy (makra) preprocesora</a></li>
+                     </ul>
+                </li>
+            </ol>
+        </nav>
+        <main >
+            <h1 style="text-align: center; ">2.2.2 Wprowadzanie danych</h1>
+            <p>Wprowadzanie danych odbywa się za pomocą podobnego mechanizmu. Tym razem obiektem reprezentującym strumień informacji wchodzących do programu ze świata zewnętrznego jest obiekt cin z klasy istream, dostępnej dzięki dołączeniu pliku iostream. Źródłem tej informacji jest domyślnie klawiatura komputera. Nazwa cin pochodzi od console input (i wymawiać ją należy si-in). Jak cout, również cin jest obiektem, a zatem można na jego rzecz wywoływać metody zdefiniowane w jego klasie. Na razie jednak będziemy korzystać głównie z mechanizmu wyjmowania ze strumienia za pomocą operatora '>>' (dwa znaki większości, bez żadnego odstępu pomiędzy nimi).</p>
+            <xmp>P4: czyt.cpp     Operator '$ \gg$'
+                1.  #include <iostream>
+                2.  #include <string>
+                3.  using namespace std;
+                4.  
+                5.  int main() {
+                6.      string imie;
+                7.      int wzrost;
+                8.      double waga;
+                9.      cout << "Podaj imie, wzrost i wage: ";
+               10.      cin  >> imie >> wzrost >> waga;
+               11.      cout << imie << ", masz " << wzrost  << " cm wzrostu "
+               12.           << "i wazysz " << waga << " kg" << endl;
+               13.  }
+          </xmp>
+            <p>Wykonanie programu miało następujący przebieg:</p>
+          <xmp> cpp> ./czyt
+            Podaj imie, wzrost i wage: Tomasz 182 76.5
+            Tomasz, masz 182 cm wzrostu i wazysz 76.5 kg
+            cpp></xmp>
+            <p>Zauważmy tu następujące fakty:</p>
+            <p>
+                <ul>
+                    <li>Kierunek „strzałek” wskazuje na kierunek przepływu informacji, tak więc dla cout informacja płynie w lewo, a więc do cout, czyli w kierunku ekranu; dla cin płynie natomiast od cin, czyli z klawiatury.</li>
+                    <li>Każdy obiekt wyjmowany jest ze strumienia osobno; nie można ich np. po prostu oddzielać przecinkami.</li>
+                    <li>Wartości danych wpisywane z klawiatury muszą zgadzać się co do typu z tym, czego oczekuje program: w powyższym programie oczekiwane są dane typu string (napis), int (liczba całkowita) i  double (liczba rzeczywista, być może z nieznikającą częścią ułamkową) i w takiej kolejności należy je wpisać. Jeśli np. spróbujemy drugą daną (wzrost) wpisać w postaci liczby z kropką dziesiętną, to wczytywanie zakończy się błędem (którego możemy nie zauważyć, jeśli sami tego jakoś nie sprawdzimy!).</li>
+                    <li>Poszczególne elementy danych wejściowych wpisujemy oddzielając je dowolnie długą niepustą sekwencją białych znaków (znaki odstępu - SP, tabulacji - HT, nowej linii - LF, powrotu karetki - CR). Białe znaki przed pierwszą daną są ignorowane, każda następna niepusta sekwencja białych znaków jest traktowana jako separator oddzielający dane. W szczególności wynika stąd, że tą metodą nie da się wczytać napisów, które zawierają białe znaki, np. odstęp. Gdybyśmy, na przykład, utworzyli zmienną typu string o nazwie imieNazwisko i usiłowali wczytać jej wartość w ten sposób:
+                        cin >> imieNazwisko;
+                        to po wpisaniu na klawiaturze np. 'Jan Kowalski' wartością zmiennej byłby napis 'Jan'; napis 'Kowalski' pozostałby w buforze klawiatury nie „wyczytany” i zostałby wczytany przez następną instrukcję wejścia (powodując najprawdopodobniej błąd).</li>
+                </ul>
+            </p>
+            <p>Operacje czytania i pisania, a więc operacje wejścia i wyjścia, należą do najbardziej zawiłych prawie w każdym języku programowania. W szczególności, dotyczy to czytania z klawiatury, ze względu na nieprzewidywalność zachowań użytkowników... Tak jest i w C++. Szczegóły odłożymy więc do rozdziału o operacjach we/wy.</p>
+
+            
+            
+                    
+            
+        </main>
+        <div class="socials">
+            <div class="socialdivs">
+                <div class="fb">
+                    <a href="#"><i class="icon-facebook"></i></a>
+                </div>
+                <div class="gm">
+                    <a href="#"><i class="icon-gmail"></i></a>
+                </div>
+                <div class="tw">
+                    <a href="#"><i class="icon-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <footer> Krzysztof Brzostowski Kl 3i &copy; </footer>
+    </div>
+    
+</body>
+</html>

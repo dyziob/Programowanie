@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Programowanie w c++</title>
+
+    <link rel="stylesheet" href="style.css" >
+
+    <link rel="stylesheet" href="css/fontello.css">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+</head>
+<body>
+    <div class="poj">
+        <header>
+            <div class="logo">
+                <img  src="image1.png" class="photo" style="float: right;"/>
+                    Programowanie w
+                <div style="clear: both;"></div>
+            </div>
+        </header>
+        <nav>
+            <ol>
+                <li><a href="index.html">Strona Główna</a></li>
+                <li><a href="1.html">1. Wprowadzenie</a>
+                    <ul>
+                        <li><a href="1.1.html">1.1 Kompilatory</a>
+                            <ul>
+                                <li><a href="1.1.1.html">1.1.1 Linux</a></li>
+                                <li><a href="1.1.2.html">1.1.2 Windows</a></li>
+                            </ul>
+                        </li>
+                            <li><a href="1.2.html">1.2 Literatura</a></li>
+                    </ul>
+                </li> 
+                <li><a href="2.html">2. Zaczynamy</a>
+                    <ul>
+                        <li><a href="2.1.html">2.1 Najprostsze programy</a></li>
+                        <li><a href="2.2.html">2.2 Proste operacje We/Wy</a>
+                            <ul>
+                                <li ><a href="2.2.1.html">2.2.1 Wyprowadzenie danych</a></li>
+                                <li ><a href="2.2.2.html">2.2.2 Wprowadzanie danych</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="2.3.html">2.3 Funkcje</a></li>
+                        <li><a href="2.4.html">2.4 Argumenty wywołania</a></li>
+                    </ul>
+                </li>
+                    <li><a href="3.html">3. Preprocesor</a>
+                     <ul>
+                         <li><a href="3.1.html">3.1 Co to jest preprocesor?</a></li>
+                         <li><a href="3.2.html">3.2 Dyrektywy preprocesora</a></li>
+                         <li id="last"><a href="3.3.html">3.3 Predefiniowane nazwy (makra) preprocesora</a></li>
+                     </ul>
+                </li>
+            </ol>
+        </nav>
+        <main>
+            <h1 style="text-align: center; ">2.3 Funkcje</h1>
+            <p>Funkcje są podstawowym elementem programów (nie tylko w C/C++). Więcej o nich powiemy w rozdziale im poświęconym . Tu podamy tylko bardzo skrótowe wprowadzenie, by móc ich używać w dalszych przykładach.</p>
+
+            <p>Funkcje pełnią w programach rolę podobną do funkcji matematycznych. Definicja funkcji, jak w matematyce, jest rodzajem przepisu opisującego, jak na podstawie danych wejściowych obliczyć pewną wartość. Sama definicja nie powoduje żadnych obliczeń: po zdefiniowaniu można jednak funkcji użyć, zwykle wielokrotnie, dla różnych konkretnych wartości danych wejściowych (argumentów) —  dla każdych takich konkretnych danych zostanie wtedy zastosowany przepis podany w definicji i obliczona wartość wyniku. Na przykład definicja funkcji f (a, b, x) = ax + b oznacza, że za każdym razem gdy użyjemy tej funkcji, będziemy musieli podać trzy liczby jako argumenty, a funkcja zwróci wynik równy iloczynowi pierwszej i trzeciej z tych liczb zwiększonemu o drugą z nich. Zauważmy, że gdy tej funkcji używamy (wywołujemy ją), to piszemy na przykład f (3, 5, w) — taki zapis oznacza zastosuj przepis podstawiając wszędzie 3 za a, 5 za b, a wartość symbolu w za x. Same nazwy a, b i x w wywołaniu funkcji nie pojawiają się. [To jest cecha C/C++; są języki, w których istnieje możliwość użycia nazw parametrów formalnych funkcji — jest to na przykład bardzo użyteczne w językach takich jak Python, Ada czy Fortran 90/95].</p>
+
+            <p>Podobnie jest w programowaniu. Rozważmy następujący program:</p>
+
+            <xmp>P5: funk.cpp     Funkcja
+                1.  #include <iostream>
+                2.  using namespace std;
+                3.  
+                4.  double linear(double a, double b, double x) {  ➊
+                5.      return a*x + b;
+                6.  }
+                7.  
+                8.  int main() {
+                9.      double c = 2, z = 3;
+               10.      double result = linear(c,5,z);             ➋
+               11.      cout << "Result = " << result << endl;
+               12.  }</xmp>
+
+            <p>Definicja funkcji linear zaczynająca się w linii ➊ mówi tyle:
+            <ul>
+                <li>definiujemy funkcję o nazwie linear;</li>
+                <li>funkcja ta będzie potrzebować trzech liczb typu double jako danych wejściowych (argumentów). Typ double opisuje w przybliżeniu liczby rzeczywiste znane z matematyki — szerzej o tym powiemy w rozdziale o typach danych . W definicji funkcji argumenty te będą występować pod nazwami a, b i  x. Jak widzimy, podobnie jak w matematyce, listę parametrów funkcji piszemy w nawiasach za nazwą tej funkcji;</li>
+                <li>typem wyniku funkcji będzie liczba rzeczywista (double) — tę informację podajemy przed nazwą funkcji;</li>
+                <li>sama definicja, za nazwą i listą parametrów, ujęta jest w nawiasy klamrowe. W naszym przypadku definicja składa się z jednej linii, ale mogłoby być ich więcej;</li>
+                <li>instrukcja return mówi, że działania funkcji tu się kończy, a jej wynikiem jest wartość wyrażenia, które pojawia się za słowem return.</li>
+            </ul>
+
+            W linii ➋ naszego przykładu wywołujemy funkcję linear. Jak widzimy, „posyłamy” do funkcji wartość zmiennej c (czyli 2) jako pierwszy argument, wartość 5 jako drugi, a wartośc z (czyli 3) jako trzeci. Te trzy wartości zostaną podstawione za a, b i  x podczas wykonania funkcji; zwrócony przez funkcję wynik (w naszym przypadku liczba 11) będzie wartością wyrażenia ' linear(c,5,z)' i zostanie przypisany do zmiennej o nazwie result, która następnie jest wypisywana.</p>
+
+            
+            
+                    
+            
+        </main>
+        <div class="socials">
+            <div class="socialdivs">
+                <div class="fb">
+                    <a href="#"><i class="icon-facebook"></i></a>
+                </div>
+                <div class="gm">
+                    <a href="#"><i class="icon-gmail"></i></a>
+                </div>
+                <div class="tw">
+                    <a href="#"><i class="icon-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <footer> Krzysztof Brzostowski Kl 3i &copy; </footer>
+    </div>
+    
+</body>
+</html>

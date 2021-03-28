@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Programowanie w c++</title>
+
+    <link rel="stylesheet" href="style.css" >
+
+    <link rel="stylesheet" href="css/fontello.css">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+</head>
+<body>
+    <div class="poj">
+        <header>
+            <div class="logo">
+                <img  src="image1.png" class="photo" style="float: right;"/>
+                    Programowanie w
+                <div style="clear: both;"></div>
+            </div>
+        </header>
+        <nav>
+            <ol>
+                <li><a href="index.html">Strona Główna</a></li>
+                <li><a href="1.html">1. Wprowadzenie</a>
+                    <ul>
+                        <li><a href="1.1.html">1.1 Kompilatory</a>
+                            <ul>
+                                <li><a href="1.1.1.html">1.1.1 Linux</a></li>
+                                <li><a href="1.1.2.html">1.1.2 Windows</a></li>
+                            </ul>
+                        </li>
+                            <li><a href="1.2.html">1.2 Literatura</a></li>
+                    </ul>
+                </li> 
+                <li><a href="2.html">2. Zaczynamy</a>
+                    <ul>
+                        <li><a href="2.1.html">2.1 Najprostsze programy</a></li>
+                        <li><a href="2.2.html">2.2 Proste operacje We/Wy</a>
+                            <ul>
+                                <li ><a href="2.2.1.html">2.2.1 Wyprowadzenie danych</a></li>
+                                <li ><a href="2.2.2.html">2.2.2 Wprowadzanie danych</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="2.3.html">2.3 Funkcje</a></li>
+                        <li><a href="2.4.html">2.4 Argumenty wywołania</a></li>
+                    </ul>
+                </li>
+                    <li><a href="3.html">3. Preprocesor</a>
+                     <ul>
+                         <li><a href="3.1.html">3.1 Co to jest preprocesor?</a></li>
+                         <li><a href="3.2.html">3.2 Dyrektywy preprocesora</a></li>
+                         <li id="last"><a href="3.3.html">3.3 Predefiniowane nazwy (makra) preprocesora</a></li>
+                     </ul>
+                </li>
+            </ol>
+        </nav>
+        <main>
+            <h1 style="text-align: center; ">2.4 Argumenty wywołania</h1>
+            <p>Jak wspomnieliśmy, do programu można przekazać dane za pomocą argumentów wywołania. Opiszemy to pokrótce teraz, aby Czytelnik mógł używać tego mechanizmu w pisanych przez siebie programach. Pełne jego zrozumienie możliwe będzie jednak dopiero po zapoznaniu się z tablicami, wskaźnikami i funkcjami w następnych rozdziałach.</p>
+
+            <p>Aby korzystanie z argumentów wywołania było możliwe, funkcja main programu powinna być zdefiniowana z nagłówkiem
+                <xmp>int main(int argc, char **argv)</xmp>
+
+                lub, równoważnie,
+
+                <xmp>int main(int argc, char *argv[])</xmp>
+
+                Pierwszy parametr, o zwyczajowej nazwie argc, jest liczbą argumentów podanych podczas wywołania programu. Pierwszym z tych argumentów, o numerze 0, jest zawsze nazwa wywoływanego programu. Tak więc argc jest zawsze co najmniej jeden. Zmienna argv wygląda trochę tajemniczo, ale tak naprawdę jest tablicą napisów zawierających kolejne argumenty wywołania: argv[0], argv[1], ..., argv[argc-1]; indeksowanie rozpoczyna się od zera, dlatego ostatnią wartścią indeksu jest argc-1 a nie argc. Tablica ta jest podobna do tablicy, nazywanej zwykle args, w Javie. Ponieważ, jak się przekonamy, tablice w C/C++ nie są obiektami i nie zawierają odpowiednika zmiennej obiektowej length z Javy, więc trzeba było przekazać tablicę napisów reprezentujących argumenty oraz, osobno, rozmiar tej tablicy (poprzez parametr argc). Więcej szczegółów na temat tablic napisów podamy w rozdziale o tablicach napisowych.</p>
+
+                <p>Tak więc, na przykład, program wypisujący swoje argumenty wywołania mógłby mieć postać:
+                    <xmp>P6: argumenty.cpp     Argumenty wywołania
+                        1.  #include <iostream>
+                        2.  using namespace std;
+                        3.  
+                        4.  int main(int argc, char **argv) {
+                        5.      cout << "Nazwa programu:   " << argv[0]  << endl
+                        6.           << "Ilosc argumentow: " << argc     << endl;
+                        7.      for (int i = 1; i < argc; i++)
+                        8.          cout << "Argumentem nr " << i       << " jest "
+                        9.                                   << argv[i] << endl;
+                       10.  }</xmp>
+                       którego uruchomienie wyglądało następująco:
+                       <xmp>cpp> g++ -o argumenty argumenty.cpp
+                        cpp> argumenty 12 a "b c" 'd e'
+                        Nazwa programu: argumenty
+                        Ilosc argumentow: 5
+                        Argumentem nr 1 jest 12
+                        Argumentem nr 2 jest a
+                        Argumentem nr 3 jest b c
+                        Argumentem nr 4 jest d e</xmp>
+
+                        Jak widzimy, można do programu przekazywać jako pojedyncze argumenty napisy zawierające odstępy, jeśli tylko ujmiemy je w cudzysłowy lub apostrofy. W powyższym przykładzie argumentów wywołania jest pięć; pierwszy, o indeksie 0, jest nazwą programu, w tym przypadku argumenty.
+
+                </p>
+            
+            
+                    
+            
+        </main>
+        <div class="socials">
+            <div class="socialdivs">
+                <div class="fb">
+                    <a href="#"><i class="icon-facebook"></i></a>
+                </div>
+                <div class="gm">
+                    <a href="#"><i class="icon-gmail"></i></a>
+                </div>
+                <div class="tw">
+                    <a href="#"><i class="icon-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <footer> Krzysztof Brzostowski Kl 3i &copy; </footer>
+    </div>
+    
+</body>
+</html>

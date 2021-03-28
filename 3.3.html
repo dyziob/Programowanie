@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Programowanie w c++</title>
+
+    <link rel="stylesheet" href="style.css" >
+
+    <link rel="stylesheet" href="css/fontello.css">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+
+</head>
+<body>
+    <div class="poj">
+        <header>
+            <div class="logo">
+                <img  src="image1.png" class="photo" style="float: right;"/>
+                    Programowanie w
+                <div style="clear: both;"></div>
+            </div>
+        </header>
+        <nav>
+            <ol>
+                <li><a href="index.html">Strona Główna</a></li>
+                <li><a href="1.html">1. Wprowadzenie</a>
+                    <ul>
+                        <li><a href="1.1.html">1.1 Kompilatory</a>
+                            <ul>
+                                <li><a href="1.1.1.html">1.1.1 Linux</a></li>
+                                <li><a href="1.1.2.html">1.1.2 Windows</a></li>
+                            </ul>
+                        </li>
+                            <li><a href="1.2.html">1.2 Literatura</a></li>
+                    </ul>
+                </li> 
+                <li><a href="2.html">2. Zaczynamy</a>
+                    <ul>
+                        <li><a href="2.1.html">2.1 Najprostsze programy</a></li>
+                        <li><a href="2.2.html">2.2 Proste operacje We/Wy</a>
+                            <ul>
+                                <li ><a href="2.2.1.html">2.2.1 Wyprowadzenie danych</a></li>
+                                <li ><a href="2.2.2.html">2.2.2 Wprowadzanie danych</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="2.3.html">2.3 Funkcje</a></li>
+                        <li><a href="2.4.html">2.4 Argumenty wywołania</a></li>
+                    </ul>
+                </li>
+                    <li><a href="3.html">3. Preprocesor</a>
+                     <ul>
+                         <li><a href="3.1.html">3.1 Co to jest preprocesor?</a></li>
+                         <li><a href="3.2.html">3.2 Dyrektywy preprocesora</a></li>
+                         <li id="last"><a href="3.3.html">3.3 Predefiniowane nazwy (makra) preprocesora</a></li>
+                     </ul>
+                </li>
+            </ol>
+        </nav>
+        <main>
+            <h1 style="text-align: center; ">3.3 Predefiniowane nazwy (makra) preprocesora</h1>
+            <p>Jak wspominaliśmy, każdy preprocesor związany z kompilatorem C++ definiuje makro __cplusplus, a związany z kompilatorem czystego, standardowego C nazwę __STDC__. Nie są to jedyne takie predefiniowane makra.</p>
+            <p>Niezależnie od platformy powinny zawsze być zdefiniowane niektóre nazwy (makra) — na początku i końcu występują zwykle podwójne podkreślniki. Nazwy te mają przypisane wartości, którymi zostanie zastąpione każde ich wystąpienie w tekście programu :</p>
+
+            <p>
+                    __LINE__ <br />
+                    : numer aktualnej linii programu w postaci stałej całkowitej;<br />
+                    __FILE__<br />
+                    : napis zawierający nazwę pliku źródłowego;
+                    __DATE__<br />
+                    : napis zawierający datę kompilacji;<br />
+                    __TIME__<br />
+                    : napis zawierający godzinę kompilacji;<br />
+                    __FUNCTION__<br />
+                    : napis zawierający nazwę funkcji w której makro zostało użyte.<br />
+                </p>
+                <p>Ostanie makro (__FUNCTION__) formalnie nie jest standardowe, ale zwykle jest zaimplementowane. Przykład użycia tych predefiniowanych nazw znajdujemy w poniższym programiku:</p>
+                <xmp>
+                        P9: dataczas.cpp     Predefiniowane nazwy preprocesora
+                        1.  #include <iostream>
+                        2.  using namespace std;
+                        3.  
+                        4.  int main() {
+                        5.      cout << "Plik:    " << __FILE__     << endl
+                        6.           << "Data:    " << __DATE__     << endl
+                        7.           << "Linia:   " << __LINE__     << endl
+                        8.           << "Czas:    " << __TIME__     << endl
+                        9.           << "Funkcja: " << __FUNCTION__ << endl;
+                       10.  }
+                </xmp>
+                <p>którego kompilacja i uruchomienie miało następujący przebieg:</p>
+                <xmp>
+                        cpp> g++ -o dataczas dataczas.cpp
+                        cpp> ./dataczas
+                        Plik:    dataczas.cpp
+                        Data:    Sep 21 2012
+                        Linia:   7
+                        Czas:    22:44:29
+                        Funkcja: main
+                        cpp> 
+                </xmp>
+            
+            
+                    
+            
+        </main>
+        <div class="socials">
+            <div class="socialdivs">
+                <div class="fb">
+                    <a href="#"><i class="icon-facebook"></i></a>
+                </div>
+                <div class="gm">
+                    <a href="#"><i class="icon-gmail"></i></a>
+                </div>
+                <div class="tw">
+                    <a href="#"><i class="icon-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <footer> Krzysztof Brzostowski Kl 3i &copy; </footer>
+    </div>
+    
+</body>
+</html>
